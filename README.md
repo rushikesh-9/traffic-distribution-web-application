@@ -105,6 +105,6 @@ npm start
 
 ---
 
-## Project Year
+## Final Year Project - 2025-2026
 
-2025 — Team Project (3 members)
+Team Project (3 members)
