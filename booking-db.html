@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DB Ticket Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-layer"></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">RideNest</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="booking.html">Quick Ticket</a>
+        <a class="active" href="booking-db.html">DB Booking</a>
+        <a href="service.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin-bookings.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-grid">
+    <section class="panel reveal">
+      <h2>Book Ticket (Database Mode)</h2>
+      <p>On submit, data is saved into local SQLite and then ticket view opens automatically.</p>
+
+      <form id="bookingFormDb" class="booking-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="passengers">Number of Passengers</label>
+        <input type="number" id="passengers" name="passengers" min="1" required />
+
+        <label for="from">From</label>
+        <input type="text" id="from" name="from" required />
+
+        <label for="destination">Destination</label>
+        <input type="text" id="destination" name="destination" required />
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required />
+
+        <button type="submit" class="btn">Save & Generate Ticket</button>
+      </form>
+
+      <p id="status" class="status"></p>
+    </section>
+
+    <aside class="panel reveal delay-1">
+      <h3>Next Steps</h3>
+      <p>After booking, open the admin page to verify row was inserted in DB table.</p>
+      <a class="btn ghost" href="admin-bookings.html">Open Admin Table</a>
+    </aside>
+  </main>
+
+  <script>
+    const form = document.getElementById("bookingFormDb");
+    const statusEl = document.getElementById("status");
+    const apiBase = window.location.protocol === "file:" ? "http://localhost:3001" : window.location.origin;
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const payload = {
+        name: document.getElementById("name").value,
+        mobile: document.getElementById("mobile").value,
+        email: document.getElementById("email").value,
+        passengers: Number(document.getElementById("passengers").value),
+        from: document.getElementById("from").value,
+        destination: document.getElementById("destination").value,
+        date: document.getElementById("date").value,
+      };
+
+      statusEl.textContent = "Saving booking...";
+
+      try {
+        const response = await fetch(`${apiBase}/api/bookings`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          statusEl.textContent = result.error || "Booking failed.";
+          return;
+        }
+
+        statusEl.textContent = "Booking saved. Redirecting...";
+        window.location.href = `ticket-view.html?id=${result.bookingId}`;
+      } catch (error) {
+        statusEl.textContent = "Server error. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

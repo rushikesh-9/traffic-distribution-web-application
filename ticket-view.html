@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Ticket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-layer"></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">RideNest</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="booking-db.html">DB Booking</a>
+        <a href="admin-bookings.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel reveal">
+      <h2>Ticket Details</h2>
+      <div class="ticket-grid" id="ticketBox">
+        <p><strong>Ticket ID</strong><span id="ticketId"></span></p>
+        <p><strong>Name</strong><span id="name"></span></p>
+        <p><strong>Mobile</strong><span id="mobile"></span></p>
+        <p><strong>Email</strong><span id="email"></span></p>
+        <p><strong>Passengers</strong><span id="passengers"></span></p>
+        <p><strong>From</strong><span id="from"></span></p>
+        <p><strong>Destination</strong><span id="destination"></span></p>
+        <p><strong>Travel Date</strong><span id="date"></span></p>
+        <p><strong>Booked At</strong><span id="bookedAt"></span></p>
+      </div>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+
+  <script>
+    async function loadTicket() {
+      const statusEl = document.getElementById("status");
+      const apiBase = window.location.protocol === "file:" ? "http://localhost:3001" : window.location.origin;
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      if (!id) {
+        statusEl.textContent = "Ticket ID missing.";
+        return;
+      }
+
+      statusEl.textContent = "Loading ticket...";
+
+      try {
+        const response = await fetch(`${apiBase}/api/bookings/${id}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+          statusEl.textContent = data.error || "Ticket not found.";
+          return;
+        }
+
+        document.getElementById("ticketId").textContent = data.id;
+        document.getElementById("name").textContent = data.name;
+        document.getElementById("mobile").textContent = data.mobile;
+        document.getElementById("email").textContent = data.email;
+        document.getElementById("passengers").textContent = data.passengers;
+        document.getElementById("from").textContent = data.source;
+        document.getElementById("destination").textContent = data.destination;
+        document.getElementById("date").textContent = data.travel_date;
+        document.getElementById("bookedAt").textContent = new Date(data.booked_at).toLocaleString();
+        statusEl.textContent = "";
+      } catch (error) {
+        statusEl.textContent = "Server error. Please try again.";
+      }
+    }
+
+    loadTicket();
+  </script>
+</body>
+</html>
+
+
+
+
+
