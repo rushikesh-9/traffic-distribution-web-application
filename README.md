@@ -35,7 +35,7 @@ I designed, provisioned, and configured the complete 4-server Linux environment 
                     HTTP (port 80)
                            |
               ┌────────────────────────┐
-              │   HAProxy Load Balancer │  ← firewalld: port 80, 8404
+              │   HAProxy Load Balancer │  ← firewalld: port 80
               │      (RHEL 9 / CentOS)  │
               └────────────────────────┘
                     /             \
@@ -85,7 +85,7 @@ All my infrastructure work is in the `/infrastructure` folder:
 | Layer | Technology |
 |---|---|
 | Load Balancer | HAProxy |
-| OS | RHEL 9, CentOS |
+| OS | RHEL9, CentOS |
 | Network Security | firewalld |
 | Service Management | systemctl / systemd |
 | Backend | Node.js, Express |
