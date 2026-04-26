@@ -3,6 +3,8 @@
 > **Bus Ticket Booking System** — A full-stack web application deployed across a 4-server Linux infrastructure with HAProxy load balancing.
 
 ---
+## Screenshots
+![HAProxy Config & Running](screenshot_lb.png)
 
 ## Team & Roles
 
