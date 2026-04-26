@@ -32,7 +32,7 @@ I designed, provisioned, and configured the complete 4-server Linux environment 
 ## Architecture
 
 ```
-                   [Internet / Clients]
+                       [Clients]
                            |
                     HTTP (port 80)
                            |
@@ -58,9 +58,9 @@ I designed, provisioned, and configured the complete 4-server Linux environment 
 
 ---
 
-## Infrastructure Files
+## Setup Files
 
-All my infrastructure work is in the `/infrastructure` folder:
+All my work is in the `/infrastructure` folder:
 
 | File | Description |
 |---|---|
