@@ -4,7 +4,13 @@
 
 ---
 ## Screenshots
-![HAProxy Config & Running](screenshot_lb.png)
+![HAProxy Config & Running](screenshots/screenshot_lb.png)
+
+### systemd Service Status
+![Service](screenshots/service-running.png)
+
+### App Running (via HAProxy)
+![App](screenshots/app-running.png)
 
 ## Team & Roles
 
