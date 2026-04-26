@@ -10,7 +10,7 @@
 
 | Member | Role |
 |---|---|
-| Rushikesh Chandanwar | **Infrastructure Engineer** — Server provisioning, HAProxy, firewall, deployment |
+| Rushikesh Chandanwar | Infrastructure — Server provisioning, HAProxy, firewall, deployment |
 | Teammate 2 | Backend Developer — Node.js + SQLite server |
 | Teammate 3 | Frontend Developer — HTML, CSS, JS |
 
