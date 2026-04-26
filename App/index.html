@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bus Booking Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-layer"></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">RideNest</a>
+      <nav class="site-nav">
+        <a class="active" href="index.html">Home</a>
+        <a href="booking.html">Quick Ticket</a>
+        <a href="booking-db.html">DB Booking</a>
+        <a href="service.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin-bookings.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero reveal">
+      <p class="eyebrow">Fast • Local • Reliable</p>
+      <h1>Book Smart Bus Tickets With Live Local Storage</h1>
+      <p class="hero-text">Modern portal for city and interstate rides. Book instantly, get ticket details, and manage all bookings from one dashboard.</p>
+      <div class="cta-row">
+        <a class="btn" href="booking-db.html">Start DB Booking</a>
+        <a class="btn ghost" href="service.html">View Routes</a>
+      </div>
+    </section>
+
+    <section class="card-grid reveal delay-1">
+      <article class="glass-card">
+        <h3>Instant Ticket</h3>
+        <p>Submit details and get your ticket page with customer info and booking date-time.</p>
+      </article>
+      <article class="glass-card">
+        <h3>Localhost Database</h3>
+        <p>Every booking is stored in local SQLite DB so your data persists between sessions.</p>
+      </article>
+      <article class="glass-card">
+        <h3>Admin Table View</h3>
+        <p>Open admin page to view all saved customer rows in table format automatically.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
