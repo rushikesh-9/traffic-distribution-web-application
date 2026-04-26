@@ -17,7 +17,7 @@ if [ "$SERVER_ROLE" == "haproxy" ]; then
   systemctl enable haproxy
   systemctl start haproxy
   systemctl status haproxy
-  echo "[+] HAProxy is running. Stats at http://<haproxy-ip>:8404/stats"
+  echo "[+] HAProxy is running. Stats at http://<haproxy-ip>:80/stats"
 
 elif [ "$SERVER_ROLE" == "appserver" ]; then
   echo "[*] Starting Node.js app via systemd..."
